@@ -132,7 +132,7 @@ body {
 @media (max-width:490px) {
 .chooseHead::before,
 .chooseHead::after {
-width: 24%;
+width: 20%;
 }
 .chooseHead::before {
   margin-right: 10px; 
