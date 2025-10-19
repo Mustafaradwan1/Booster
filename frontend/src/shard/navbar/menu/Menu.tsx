@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { FaBars } from "react-icons/fa";
 import NavbarLinks from '../navbarLinks/NavbarLinks';
-import { navUserLink } from '@/utils/utils';
 import Search from '../search/Search';
 
 const Menu = () => {
@@ -13,7 +12,7 @@ const Menu = () => {
         {Active && 
             <div className='absolute z-50 top-[63px] shadow left-0 w-[100%] bg-[var(--background)]'>
                 <div className="container">
-                   <NavbarLinks navUserLink={navUserLink} onClose={() => setActive(false)}  style={"flex flex-col py-8 gap-5"} />
+                   <NavbarLinks onClose={() => setActive(false)}  style={"flex flex-col py-8 gap-5"} />
                    <div className='min-sm:hidden'><Search/></div>
                 </div>
             </div>
