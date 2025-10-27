@@ -1,0 +1,105 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { DivisionBoostingSection } from '@/type/boosting';
+import Image, { StaticImageData } from 'next/image';
+import React, { useEffect, useState } from 'react'
+
+const DivisionBoosting = ({data} : {data:DivisionBoostingSection}) => {
+  const [ImageActive, setImageActive] = useState<string | StaticImageData | null>(null);
+  const boostingBoxes = data?.DivisionBoostingBox || [];
+  const selectOptions = data?.selectOptions || [];
+  const addons = data?.Addons || [];
+    useEffect(() => {
+    if (boostingBoxes.length > 0 && boostingBoxes[0].imgs.length > 0) {
+      setImageActive(boostingBoxes[0].imgs[0]);
+    }
+  }, [boostingBoxes]);
+  if (!data || data.DivisionBoostingBox?.length === 0) return null;
+
+  return (
+    <div className="col-span-12">
+      <div className="bg-[#1c1f2b] rounded-2xl py-16">
+        <div className='grid grid-cols-12 gap-5 mb-10'>
+          {boostingBoxes.map((ele, ind) => (
+            <div key={ind} className="col-span-12 lg:col-span-6 bg-[#242836] rounded-2xl py-12 px-8">
+              <h3 className='text-3xl sm:text-4xl md:text-5xl mb-4'>{ele.title}</h3>
+              <p>{ele.p}</p>
+              <div className="bg-[#202332] rounded-lg flex justify-center items-center h-[90px] mt-8">
+                {ImageActive ? (
+                  <Image
+                    src={ImageActive}
+                    alt="active-rank"
+                    width={80}
+                    height={80}
+                    className="rounded-lg object-contain"
+                  />
+                ) : (
+                  <span className="text-gray-400">No image selected</span>
+                )}
+              </div>
+              <div className="item mt-5 grid grid-cols-12 gap-[10px]">
+                {ele.rank?.map((item, ind) => (
+                  <div
+                    key={ind}
+                    className="flex items-center justify-center text-xl col-span-6 sm:col-span-3 h-[70px] bg-[#202332] rounded-2xl"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <div className="image mt-4 flex max-sm:flex-wrap justify-between overflow-x-auto no-scrollbar gap-1">
+                {ele.imgs.map((img, ind) => (
+                  <div
+                    key={ind}
+                    className={`w-[40px] sm:w-full h-[40px] p-1 rounded-lg cursor-pointer transition-all duration-200 ${
+                    ImageActive === img ? 'bg-[#1784b4]' : 'bg-[#202332]'
+                    }`}
+                    onClick={() => setImageActive(img)}
+                    >
+                    <div className="w-full h-full relative">
+                      <Image fill src={img} alt={`rank-${ind}`} className="object-contain rounded-md" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className='flex flex-wrap gap-[10px] col-span-12'>
+          {selectOptions.map((ele,ind)=>(
+            <div key={ind} className='select bg-[#242836] w-full mb-3 sm:w-[calc(50%-10px)] md:w-[calc(25%-10px)] py-4 px-6 rounded-2xl'>
+              <h4>{ele.title}</h4>
+              <select name={ele.title} className='w-full mt-3 outline-none' id="">
+                {ele.select.map((option, i) => (
+                  <option className='bg-[#1c1f2a] !hover:bg-red-500' key={i} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>      
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="rounded-2xl mt-5 grid grid-cols-12 gap-5">
+        <h4 className='col-span-12 text-4xl'>Addons</h4>
+        {addons.map((ele,ind)=>(
+          <div key={ind} className='col-span-12 sm:col-span-6 bg-[#232736] flex items-center justify-between rounded-xl p-5'>
+            <div className='flex gap-3 '>
+              <span>
+                {ele.icon}
+              </span>
+              <span>
+                {ele.title}
+              </span>
+              <span>
+                {ele.dis}
+              </span>
+            </div>
+            <input type='checkbox' className='w-[20px] h-[20px] cursor-pointer' />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default DivisionBoosting

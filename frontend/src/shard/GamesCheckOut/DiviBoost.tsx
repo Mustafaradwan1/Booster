@@ -1,98 +1,88 @@
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import { FormInformation } from '@/type/boosting';
+import React, { useState } from 'react';
+import DivisionBoosting from './DivisionBoosting';
+import WinBoosting from './WinBoosting';
+import PlacementMatches from './PlacementMatches';
+import ChampionMastery from './ChampionMastery';
+import DuoGames from './DuoGames';
 
-interface DivisionBoostingBox {
-  title: string;
-  p: string;
-  rank: string[];
-  imgs: string[];
-}
-
-interface SelectOption {
-  title: string;
-  select: string[];
-}
-
-interface Addon {
-  icon: string;
-  title: string;
-  dis: string;
-}
-
-interface DiviBoostProps {
-  divi?: {
-    DivisionBoostingBox?: DivisionBoostingBox[];
-    selectOptions?: SelectOption[];
-    Addons?: Addon[];
-  }[];
-}
-
-const DiviBoost = ({ divi }: DiviBoostProps) => {
-  const boostingBoxes = divi?.[0]?.DivisionBoostingBox || [];
-  const selectOptions = divi?.[1]?.selectOptions || [];
-  const addons = divi?.[2]?.Addons || [];
-
-  const [ImageActive, setImageActive] = useState<string | null>(null);
-
-  // 🟢 Hook دايمًا يتنادى (حتى لو البيانات فاضية)
-  useEffect(() => {
-    if (boostingBoxes.length > 0 && boostingBoxes[0].imgs.length > 0) {
-      setImageActive(boostingBoxes[0].imgs[0]);
+const DiviBoost = ({ divi} : { divi: FormInformation }) => {
+  const [activeService, setActiveService] = useState(divi.services[0].title);
+    const data = divi?.services || []
+    const rows = [];
+    for (let i = 0; i < data.length; i += 3) {
+      rows.push(data.slice(i, i + 3));
     }
-  }, [boostingBoxes]);
-
-  // 🔴 لو مفيش بيانات خالص نرجع هنا
-  if (!divi || boostingBoxes.length === 0) return null;
-
-  return (
-    <div className="grid grid-cols-12 gap-[40px] mt-12">
-      {boostingBoxes.map((ele, ind) => (
-        <div key={ind} className="col-span-6 bg-[#242836] rounded-2xl py-12 px-8">
-          <h3>{ele.title}</h3>
-          <p>{ele.p}</p>
-
-          <div className="bg-[#202332] rounded-lg flex justify-center items-center h-[90px] mt-8">
-            {ImageActive ? (
-              <Image
-                src={ImageActive}
-                alt="active-rank"
-                width={80}
-                height={80}
-                className="rounded-lg object-contain"
-              />
-            ) : (
-              <span className="text-gray-400">No image selected</span>
-            )}
+      let activeInfo:
+    | { head: string; p: string; p2?: string; }
+    | null;
+  switch (activeService) {
+    case 'Division Boosting':
+      activeInfo = divi.DivisionBoosting?.Info;
+      break;
+    case 'Win Boosting':
+      activeInfo = divi.WinBoosting?.info;
+      break;
+    case 'Placement Matches':
+      activeInfo = divi.PlacementMatches?.info;
+      break;
+    case 'Duo Games':
+      activeInfo = divi.DueGames?.info;
+      break;
+    case 'Champion Mastery':
+      activeInfo = divi.ChampionMastery?.info;
+      break;
+    default:
+      activeInfo = null;
+  }
+  return ( 
+    <div className="col-span-12 xl:col-span-9 bg-[#1c1f2b] rounded-2xl py-16 px-10">
+        {activeInfo && (
+          <div className="mb-10">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">
+              {activeInfo.head}
+            </h2>
+            <p className="mb-4">{activeInfo.p}</p>
+            <p>{activeInfo.p2}</p>
           </div>
-
-          <div className="item mt-5 grid grid-cols-12 gap-[10px]">
-            {ele.rank.map((item, ind) => (
-              <div
-                key={ind}
-                className="flex items-center justify-center text-xl col-span-3 h-[70px] bg-[#202332] rounded-2xl"
-              >
-                {item}
+        )}
+        <div className="space-y-[20px] mt-5">
+          {rows.map((row, rowIndex) => {
+            let gridCols = "grid-cols-1 md:grid-cols-3";
+            if (row.length === 2) gridCols = "grid-cols-1 md:grid-cols-2"; 
+            if (row.length === 1) gridCols = "grid-cols-1"; 
+             return (
+               <div
+                key={rowIndex}
+                 className={`grid ${gridCols} gap-[20px]`}
+               >
+                {row.map((item, i) => (
+                  <div
+                    key={i}
+                    onClick={() => setActiveService(item.title)}
+                    className={`${activeService === item.title ? "bg-[var(--main-color)]" : "bg-[#242836]"} cursor-pointer text-white text-center py-6 rounded-lg font-semibold`}>
+                    {item.title}
+                   </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="image mt-4 flex flex-wrap justify-between overflow-x-auto no-scrollbar gap-1">
-            {ele.imgs.map((img, ind) => (
-              <div
-                key={ind}
-                className={`w-[40px] h-[40px] p-1 rounded-lg cursor-pointer transition-all duration-200 ${
-                  ImageActive === img ? 'bg-[#1784b4]' : 'bg-[#202332]'
-                }`}
-                onClick={() => setImageActive(img)}
-              >
-                <div className="w-full h-full relative">
-                  <Image fill src={img} alt={`rank-${ind}`} className="object-contain rounded-md" />
-                </div>
-              </div>
-            ))}
-          </div>
+             );
+           })}
         </div>
-      ))}
+        <div className='grid grid-cols-12'>
+          {activeService === "Division Boosting" && (
+            <DivisionBoosting data={divi.DivisionBoosting} />
+          )}
+          {activeService === "Win Boosting" && (
+            <WinBoosting data={divi.WinBoosting} />
+          )}
+          {activeService === "Placement Matches" && (
+            <PlacementMatches data={divi.PlacementMatches} />
+          )}
+          {activeService === "Duo Games" && <DuoGames data={divi.DueGames} />}
+          {activeService === "Champion Mastery" && (
+            <ChampionMastery data={divi.ChampionMastery} />
+          )}
+        </div>
     </div>
   );
 };
