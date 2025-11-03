@@ -20,7 +20,7 @@ app.get('/', async (req,res,next)=>{
     try{
         res.status(200).json({message:"Hello World"})
     }catch (e) {
-        next(e)
+        next(e);
     }
 })
 app.use('/api' , api)
