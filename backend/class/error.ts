@@ -30,5 +30,6 @@ class resError {
    static notProvides(data:string){
         return {status:400 , message:{message:`the ${data} was not provides`}}
    }
+
 }
 export default resError;

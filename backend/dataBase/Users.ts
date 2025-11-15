@@ -10,6 +10,10 @@ const schema =new  mongoose.Schema({
     },IsBooster:{
         type:Boolean,
         default:false,
+        //Boost dashboard
+        //can accept the request to boost it
+        //auto chat when he accepts any order with client
+        //the admin and super and supporter can access to the chat
     },username:{
         type:String,
         minLength:3,
@@ -26,6 +30,10 @@ const schema =new  mongoose.Schema({
         type:Boolean,
         default:false,
     },IsSeller:{
+        type:Boolean,
+        default:false,
+        //can add item to sell it
+    },IsSupporter:{
         type:Boolean,
         default:false,
     }

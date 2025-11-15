@@ -197,7 +197,7 @@ either IsAdmin or IsSuperAdmin.
 ```
 {
 "userId": "string",
-"role": "string" // "admin", "isbooster", or "isseller" ==> "i dont care about the case of letter UPPERCASE or lowercase just in role"
+"role": "string" // "admin","Issupporter", "isbooster", or "isseller" ==> "i dont care about the case of letter UPPERCASE or lowercase just in role"
 }
 ```
 ## Process Logic
@@ -209,7 +209,7 @@ either IsAdmin or IsSuperAdmin.
 6. Save and respond with success.
 ## Example Request
 ```
-POST /upgrade
+POST /admin/upgrade
 Cookie: token=eyJhbGciOi...
 {
 "userId": "670e3c6b12a51a0f57d3a19a",
@@ -251,3 +251,108 @@ Cookie: token=eyJhbGciOi...
 | admin | Only Super Admin |
 | isbooster | Admin or Super Admin |
 | isseller | Admin or Super Admin |
+| issupporter | Admin or Super Admin
+
+# Remove Role Endpoint (Express.js)
+
+This README explains the functionality of the provided Express.js route, which handles removing specific roles from a user in the database.
+
+---
+
+## 📌 Overview
+
+This endpoint is available at:
+
+**Route:** `/admin/downgrade`
+**Method:** `POST`
+
+Only the **Super Admin** can downgrade (remove Admin role). All other roles (Booster, Seller) can be downgraded by **Admin or Super Admin**.
+This route removes a role (Admin, Booster, Seller) from a user. It is protected by an authentication middleware (`Auth`) and interacts with a Users database model.
+
+**HTTP Method:** `POST`
+**Route:** `/`
+**Middleware:** `Auth`
+
+---
+
+## 📂 File Purpose
+
+The file exports an Express router that:
+
+1. Ensures the request is authenticated.
+2. Accepts a user ID and a role name.
+3. Finds the user in the database.
+4. Removes the specified role.
+5. Returns a success or error message.
+
+---
+
+## 📥 Request Body
+
+The request body must contain:
+
+```json
+{
+  "userId": "string",
+  "role": "string"
+}
+```
+
+Example:
+
+```json
+{
+  "userId": "67321b29f8e5acd515bc30f1",
+  "role": "admin"
+}
+```
+
+---
+
+## 🔄 Workflow
+
+1. Authenticate request.
+2. Extract `userId` + `role` from request body.
+3. Find user in database.
+4. Validate user existence.
+5. Remove the role.
+6. Save user.
+7. Return success message.
+
+---
+
+## 📤 Success Response
+
+```json
+{
+  "message": "successful"
+}
+```
+
+---
+
+## ❌ Error Responses
+
+### User Not Found
+
+```json
+{
+  "message": "No users found"
+}
+```
+
+### Any Internal Error
+
+Handled by Express `next(err)`.
+
+---
+
+## ✅ Summary
+
+This route is used to **revoke a user's role** in a secure, authenticated manner. It supports removing:
+
+* Admin
+* Booster
+* Seller
+
+The request must be authenticated and the user must exist.
