@@ -351,8 +351,13 @@ Handled by Express `next(err)`.
 
 This route is used to **revoke a user's role** in a secure, authenticated manner. It supports removing:
 
-* Admin
-* Booster
-* Seller
+## Roles Summary
+| Role | Who Can Assign It |
+|-------|------------------|
+| admin | Only Super Admin |
+| isbooster | Admin or Super Admin |
+| isseller | Admin or Super Admin |
+| issupporter | Admin or Super Admin
+
 
 The request must be authenticated and the user must exist.
