@@ -361,3 +361,153 @@ This route is used to **revoke a user's role** in a secure, authenticated manner
 
 
 The request must be authenticated and the user must exist.
+
+
+---
+
+```md
+# 📦 Add Product Endpoint — README
+
+## 🚀 Overview
+This endpoint allows **Supporter** users to add new products to the system.  
+It requires authentication and proper role permissions.
+
+---
+
+## 🔗 Endpoint
+**POST** `/api/add-product/`
+
+---
+
+## 🔐 Authorization
+This route uses authentication middleware (`Auth`).  
+Only users with:
+
+```
+
+IsSupporter === true
+
+````
+
+are allowed to add products.
+
+Authentication is done via **JWT token stored in cookies**.
+
+---
+
+## 📝 Request Body (JSON)
+
+```json
+{
+  "ProductName": "string",
+  "Count": 10,
+  "Price": 9.99,
+  "Description": "string",
+  "Img": "string",
+  "TheGame": "string"
+}
+````
+
+### Required Fields
+
+* `ProductName`
+* `Count`
+* `Price`
+
+### Optional Fields
+
+* `Description`
+* `Img`
+* `TheGame`
+
+---
+
+## ✅ Successful Response (201 Created)
+
+```json
+{
+  "message": "Success",
+  "product": {
+    "_id": "example_id",
+    "ProductName": "Magic Sword",
+    "Count": 5,
+    "Price": 49.99,
+    "Description": "A sharp sword",
+    "Img": "https://example.com/sword.png",
+    "TheGame": "RPG",
+    "createdAt": "2025-11-28T17:00:00.000Z",
+    "updatedAt": "2025-11-28T17:00:00.000Z"
+  }
+}
+```
+
+---
+
+## ❌ Error Responses
+
+### 401 — Not Authenticated
+
+```json
+{ "message": "Token not provided" }
+```
+
+### 403 — No Permission
+
+```json
+{ "message": "You do not have access (supporter)" }
+```
+
+### 400 — Invalid Input
+
+```json
+{ "message": "ProductName is required" }
+```
+
+### 500 — Server Error
+
+```json
+{ "message": "Internal server error" }
+```
+
+---
+
+## 🧪 Example Request (cURL)
+
+```bash
+curl -X POST "https://your-domain.com/api/products/" \
+  -H "Content-Type: application/json" \
+  --cookie "token=YOUR_JWT_TOKEN" \
+  -d '{
+    "ProductName": "Magic Wand",
+    "Count": 3,
+    "Price": 29.99,
+    "Description": "A wand for wizards",
+    "Img": "https://example.com/wand.png",
+    "TheGame": "MagicWorld"
+  }'
+```
+
+---
+
+## 🧱 Notes
+
+* Only Supporter accounts can create products.
+* Price and Count must be valid numbers.
+* Product data is stored in MongoDB using Mongoose models.
+
+---
+
+## 📚 Suggested Improvements
+
+* Add validation using `express-validator`
+* Support image uploads (multer)
+* Add product categories / tags
+
+---
+
+## 🎉 Done!
+
+```
+
+---
+

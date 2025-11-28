@@ -24,7 +24,7 @@ class resError {
    static noUsers(){
         return {status:401 , message:{message:'no user found'}};
    }
-   static notAdminOrSuper(data:string) {
+   static haveNotAccess(data:string) {
         return {status:401 , message:{message:`you are not ${data} you have not access to do it`}};
    }
    static notProvides(data:string){

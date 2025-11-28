@@ -12,8 +12,8 @@ const schema =new  mongoose.Schema({
         default:false,
         //Boost dashboard
         //can accept the request to boost it
-        //auto chat when he accepts any order with client
-        //the admin and super and supporter can access to the chat
+        //auto chat open when he accepts any order with client
+        //the admin , super and supporter can access to the chat
     },username:{
         type:String,
         minLength:3,
