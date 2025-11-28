@@ -411,12 +411,9 @@ Authentication is done via **JWT token stored in cookies**.
 ### Required Fields
 
 * `ProductName`
-* `Count`
+* `Count default value is 1`
 * `Price`
-
-### Optional Fields
-
-* `Description`
+* `Description minlength is 10`
 * `Img`
 * `TheGame`
 
