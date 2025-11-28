@@ -365,8 +365,8 @@ The request must be authenticated and the user must exist.
 
 ---
 
-```md
-# 📦 Add Product Endpoint — README
+
+# 📦 Add Product Endpoint
 
 ## 🚀 Overview
 This endpoint allows **Supporter** users to add new products to the system.  
