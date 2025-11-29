@@ -3,10 +3,12 @@ import Link from 'next/link'
 import { FaShoppingCart } from "react-icons/fa";
 import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
-import { useTheme } from '@/ThemeProvider/ThemeContext ';
+import { useTheme } from 'next-themes';
+// import { useTheme } from '@/ThemeProvider/ThemeContext ';
 
 const NavBotns = () => {
-  const { darkMode, toggleDarkMode } = useTheme();
+  // const { darkMode, toggleDarkMode } = useTheme();
+    const { theme, setTheme } = useTheme();
   return (
     <div className='flex items-center gap-4'>
         <div className='flexCenter cursor-pointer relative w-[40px] h-[40px] rounded-full shadow bg-gray-200'>
@@ -18,9 +20,9 @@ const NavBotns = () => {
         </button>
       <button
         className="cursor-pointer text-2xl rounded-full text-[var(--foreground)]"
-        onClick={toggleDarkMode}
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       >
-        {darkMode ? <CiDark /> : <CiLight />}
+        {theme === "light"  ? <CiDark /> : <CiLight />}
       </button>
     </div>
   )

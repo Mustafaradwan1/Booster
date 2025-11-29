@@ -8,7 +8,7 @@ import Menu from './menu/Menu'
 const Navbar = () => {
   return (
     <div className='h-[60px] shadow z-50'>
-        <div className="container h-full flex items-center justify-between">
+        <div className="container  h-full flex items-center justify-between">
           <div className='flex'>
             <Menu/>
             <Logo/>

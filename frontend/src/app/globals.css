@@ -1,28 +1,20 @@
 @import "tailwindcss";
-
+@custom-variant dark (&:where(.dark, .dark *));
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --main-color: #00B67B
+  --background: var(--color-MainBg);
 }
+.dark {
+  --background: var(--color-MainBg-dark);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-.dark-mode {
-  --background:#242634; 
-  --foreground: #ededed;
-  --main-color: #00B67B;
-  --hr:#ededed;
-  --sec-color:#1D1F2B;
-}
-.light-mode{
-  --background: #fff;
-  --hr:gray;
-  --sec-color:#fff;
+  --color-main: #E83C91;
+  --color-MainBg: #fff;
+  --color-MainBg-dark: #1D1F2B;
 }
 
 body {
@@ -143,7 +135,18 @@ width: 20%;
 }
 }
 .header{
-  background-image: url("../../public/header/zed.webp");
+  background-image: url("../../public/header/background.png");
+  position: relative;
+}
+.header::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.144);
+  top: 0;
+  left: 0;
+  
 }
 
 
