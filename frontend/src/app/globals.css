@@ -1,35 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
-:root {
-  --background: var(--color-MainBg);
-}
-.dark {
-  --background: var(--color-MainBg-dark);
+@layer base {
+  :root {
+    /* Default Gradient */
+    --text-main-color:rgb(139 92 246);
+    --gradient-main: linear-gradient(
+      90deg,
+      rgb(139 92 246) 0%,   /* violet-500 */
+      rgb(99 102 241) 45%,  /* indigo-500 */
+      rgb(34 211 238) 100%  /* cyan-400 */
+    );
+
+    /* Hover Gradient */
+    --gradient-main-hover: linear-gradient(
+      90deg,
+      rgb(109 40 217) 0%,   /* violet-700 */
+      rgb(67 56 202) 45%,  /* indigo-700 */
+      rgb(8 145 178) 100%  /* cyan-600 */
+    );
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-main: #E83C91;
-  --color-MainBg: #fff;
-  --color-MainBg-dark: #1D1F2B;
+@layer utilities {
+  /* Background Gradient */
+  .bg-gradient-main {
+    background: var(--gradient-main);
+    background-size: 140% 140%;
+  }
+  .bg-gradient-main-hover:hover {
+    background: var(--gradient-main-hover);
+  }
+  /* Text Gradient */
+  .text-gradient-main {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-main-hover:hover {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #1D1F2B;
+  color: white;
+  font-family: "Poppins", sans-serif;
+
 }
 .container{
   margin: auto;
+}
+.navLink::after{
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gradient-main);
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+}
+.navLink:hover::after{
+  width: 100%;
 }
 @media (max-width:650px){
   .container{
     padding: 0 5% !important;
   }
 }
+.header{
+  background-image: url("../../public/header/background.png");
+  position: relative;
+  background-position: 30px 50px;
+  background-repeat: no-repeat;
+}
+.header::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.641);
+  top: 0;
+  left: 0;
+  
+}
+.numberBox:hover{
+  animation: moveingUpAndDown .5s linear;
+  -webkit-animation: moveingUpAndDown .8s linear;
+}
+@keyframes moveingUpAndDown {
+  0%{
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
+25%{
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      -o-transform: scale(1.1);
+}
+50%{
+      transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
+75%{
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      -o-transform: scale(1.1);
+}
+100%{
+      transform: scale(1);
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+}
+}
+
 .flexCenter{
   display: flex;
   justify-content: center;
@@ -134,19 +236,30 @@ width: 20%;
   margin-left: 10px;
 }
 }
-.header{
-  background-image: url("../../public/header/background.png");
-  position: relative;
+.PopularGamesBox,.PopularGamesBoxSec{
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
 }
-.header::before{
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.144);
-  top: 0;
-  left: 0;
-  
+.PopularGamesBox{
+  transition-delay: .3s;
 }
+.PopularGamesBox:hover{
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+}
+.PopularGamesBoxSec:hover{
+    transform:scale(1.05);
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    -ms-transform:scale(1.05);
+    -o-transform:scale(1.05);
+}
+
 
 

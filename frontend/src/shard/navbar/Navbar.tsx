@@ -1,20 +1,20 @@
 import React from 'react'
 import NavbarUser from './navUser/NavbarUser'
 import Logo from './Logo'
-import Search from './search/Search'
+// import Search from './search/Search'
 import NavBotns from './NavBotns/NavBotns'
 import Menu from './menu/Menu'
 
 const Navbar = () => {
   return (
-    <div className='h-[60px] shadow z-50'>
+    <div className='h-[60px] shadow z-50 fixed top-0 left-0 right-0 bg-[#1D1F2B]'>
         <div className="container  h-full flex items-center justify-between">
           <div className='flex'>
             <Menu/>
             <Logo/>
           </div>
           <NavbarUser/>
-          <div className='max-sm:hidden max-lg:flex-1 lg:w-[250px] mr-4'><Search/></div>
+          {/* <div className='max-sm:hidden max-lg:flex-1 lg:w-[250px] mr-4'><Search/></div> */}
           <NavBotns/>
         </div>
     </div>

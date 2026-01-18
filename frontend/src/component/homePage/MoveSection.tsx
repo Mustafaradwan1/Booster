@@ -67,7 +67,7 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
 export default function MoveSection() {
   return (
     <section className="section py-3 bg-[#8C8BE8] text-white">
-      <ParallaxText baseVelocity={-5}>Framer Motion</ParallaxText>
+      <ParallaxText baseVelocity={-5}>I Boost Is A Best</ParallaxText>
     </section>
   );
 }
