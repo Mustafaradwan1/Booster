@@ -11,11 +11,6 @@ const Header = () => {
                 <p className='text-[16px] md:text-lg lg:text-xl '>
                   Join millions of players worldwide. Compete in tournaments, climb the ranks, and become a legend.
                 </p>
-                <div className="rank flex gap-6">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
             </div>
             <div className="number w-full md:w-[60%]  flex justify-between">
               <div className={style}>
