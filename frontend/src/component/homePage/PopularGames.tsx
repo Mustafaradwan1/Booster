@@ -6,14 +6,17 @@ import { LuUsersRound } from "react-icons/lu";
 
 const PopularGames = () => {
   return (
-    <div className='py-20 '>
-        <div className='flex justify-center'>
-            <h2 className='chooseHead w-fit text-center relative font-bold mb-8 text-2xl   sm:text-3xl'>Choose your game:</h2>
-        </div>
-            <div className="container flex  gap-4">
+    <div className='py-10 '>
+      <div className="container">
+        <h2 className='chooseHead w-fit relative font-bold mb-2 text-2xl   sm:text-3xl'>Popular Games</h2>
+        <p className='flex items-center justify-between mb-12'>
+          <span>Most popular games right now</span>
+          <span className='text-[var(--text-main-color)]'>Veiw All</span>
+        </p>
+      <div className='flex gap-4 justify-between'>
                 {gamesImg.map((ele,ind)=>(
                 <div key={ind} className="PopularGamesBox  md:w-[calc(25%-16px)]">
-                  <div className="PopularGamesBoxSec h-[400px] w-full cursor-pointer relative border border-gray-600 hover:border-[var(--text-main-color)] rounded-lg">
+                  <div className="PopularGamesBoxSec h-[400px]  object-cover w-full cursor-pointer relative border border-gray-600 hover:border-[var(--text-main-color)] rounded-lg overflow-hidden">
                     <Image  src={ele.img} alt={"game title"} className='w-full h-full object-fill'/>
                     <div className='absolute bottom-0 w-full p-5'>
                       <h5 className='text-xl font-bold'>{ele.h2}</h5>
@@ -25,6 +28,7 @@ const PopularGames = () => {
                   </div>
                 </div>
                 ))}
+        </div>
             </div>
     </div>
   )

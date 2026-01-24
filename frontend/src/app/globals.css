@@ -77,7 +77,7 @@ body {
 .header{
   background-image: url("../../public/header/background.png");
   position: relative;
-  background-position: 30px 50px;
+  background-position: 0px 50px;
   background-repeat: no-repeat;
 }
 .header::before{

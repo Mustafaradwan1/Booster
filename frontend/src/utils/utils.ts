@@ -1,8 +1,8 @@
 // Popular games img
-import img1 from "../../public/mainPage/PopularGames/img1.svg"
-import img2 from "../../public/mainPage/PopularGames/img2.svg"
-import img3 from "../../public/mainPage/PopularGames/img3.svg"
-import img4 from "../../public/mainPage/PopularGames/img4.svg"
+import img1 from "../../public/img1.avif"
+import img2 from "../../public/img2.jpg"
+import img3 from "../../public/img3.jpg"
+import img4 from "../../public/img4.jpg"
 export const navLink = [
     { title:"League of Legends", hash:"/League-of-Legends" },
     { title:"Valorant", hash:"/Valorant" },
