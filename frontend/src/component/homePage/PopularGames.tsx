@@ -13,12 +13,12 @@ const PopularGames = () => {
           <span>Most popular games right now</span>
           <span className='text-[var(--text-main-color)]'>Veiw All</span>
         </p>
-      <div className='flex gap-4 justify-between'>
+      <div className='flex gap-4 flex-wrap justify-between'>
                 {gamesImg.map((ele,ind)=>(
-                <div key={ind} className="PopularGamesBox  md:w-[calc(25%-16px)]">
-                  <div className="PopularGamesBoxSec h-[400px]  object-cover w-full cursor-pointer relative border border-gray-600 hover:border-[var(--text-main-color)] rounded-lg overflow-hidden">
+                <div key={ind} className="PopularGamesBox w-[calc(50%-16px)] sm:w-[calc(33.33%-16px)]  md:w-[calc(33%-16px)] lg:w-[calc(25%-16px)]">
+                  <div className="PopularGamesBoxSec h-[350px] cursor-pointer relative border border-gray-600 hover:border-[var(--text-main-color)] rounded-lg overflow-hidden">
                     <Image  src={ele.img} alt={"game title"} className='w-full h-full object-fill'/>
-                    <div className='absolute bottom-0 w-full p-5'>
+                    <div className='absolute bottom-0 w-full p-5 z-10'>
                       <h5 className='text-xl font-bold'>{ele.h2}</h5>
                       <p className='flex justify-between w-full items-center'>
                         <span className='flex gap-1 items-center'><CiStar className='text-xl text-amber-300' />{ele.rate}</span>
