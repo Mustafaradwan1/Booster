@@ -15,10 +15,23 @@ export const navLink = [
     { title:"Counter Strike 2", hash:"/Counter-Strike-2" }
 ]
 export const gamesImg = [
-    {img:img1,h2:"cyber legend",rate:4.5,view:"2m"},
-    {img:img2,h2:"cyber legend",rate:4.9,view:"1.7m"},
-    {img:img3,h2:"cyber legend",rate:4.2,view:"800k"},
-    {img:img4,h2:"cyber legend",rate:3.6,view:"1.3m"},
+    {img:img1},
+    {img:img2},
+    {img:img3},
+    {img:img3},
+    {img:img3},
+    {img:img4},
+]
+export const ChoseGame = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img3,
+    img1,
+    img4,
+    img3,
+    img2,
 ]
 
 
