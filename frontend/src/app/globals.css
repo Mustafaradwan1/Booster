@@ -54,19 +54,54 @@ body {
 .container{
   margin: auto;
 }
-.navLink::after{
-  content: "";
-  position: absolute;
-  bottom: 15px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--gradient-main);
-  transition: all .5s;
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  -ms-transition: all .5s;
-  -o-transition: all .5s;
+@media (min-width: 768px) {
+      .container{
+    width: 760px;
+  }
+}
+@media (min-width: 1024px) {
+    .container{
+    width: 990px;
+  }
+}
+@media (min-width: 1280px) {
+  .container{
+    width: 1210px;
+  }
+}
+@media (min-width: 1536px) {
+}
+@media (min-width: 992px) {
+  .navLink::after{
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--gradient-main);
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+  }
+}
+@media (max-width:992px){
+  .navLink::after{
+        content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--gradient-main);
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+  }
 }
 .navLink:hover::after{
   width: 100%;
@@ -142,7 +177,6 @@ content: "";
   );
   z-index: 1;
 }
-
 .numberBox:hover{
   animation: moveingUpAndDown .5s linear;
   -webkit-animation: moveingUpAndDown .5s linear;
@@ -314,5 +348,8 @@ width: 20%;
     -o-transform:scale(1.05);
 }
 
+
+
+/* globals.css أو ملف CSS الرئيسي */
 
 

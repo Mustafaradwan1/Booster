@@ -11,24 +11,26 @@ interface ImageSliderProps {
   slidesToShow?: number;
   images: (string | StaticImageData)[];
 }
-const SliderGame: React.FC<ImageSliderProps> = ({ slidesToShow = 6, images }) => {
+const SliderGame: React.FC<ImageSliderProps> = ({ slidesToShow = 5, images }) => {
   return (
     <Swiper
           modules={[Navigation, Autoplay]}
           navigation
           loop={true}
+          speed={4000}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
           breakpoints={{
-            320: { slidesPerView: 1 },
-            640: { slidesPerView: Math.min(2, slidesToShow) },
-            768: { slidesPerView: Math.min(3, slidesToShow) },
+            320: { slidesPerView: 2 },
+            450: { slidesPerView: Math.min(2, slidesToShow) },
+            600: { slidesPerView: Math.min(3, slidesToShow) },
+            800: { slidesPerView: Math.min(4, slidesToShow) },
             1024: { slidesPerView: slidesToShow },
           }}
           spaceBetween={20}
         >
         {images.map((img, index) => (
           <SwiperSlide key={index}>
-            <Image src={img} alt={`slide-${index}`} className="w-full h-[300px] rounded-lg" />
+            <Image src={img} alt={`slide-${index}`} className="w-full h-[280px] rounded-lg" />
             <h2>conter game</h2>
           </SwiperSlide>
         ))}
