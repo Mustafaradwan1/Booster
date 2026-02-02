@@ -8,6 +8,20 @@ import img1 from "../../public/img1.avif"
 import img2 from "../../public/img2.jpg"
 import img3 from "../../public/img3.jpg"
 import img4 from "../../public/img4.jpg"
+// chose your game image
+import chose2 from "../../public/mainPage/choseYourGame/2.png"
+import chose3 from "../../public/mainPage/choseYourGame/3.png"
+import chose4 from "../../public/mainPage/choseYourGame/4.png"
+import chose5 from "../../public/mainPage/choseYourGame/5.png"
+import chose6 from "../../public/mainPage/choseYourGame/6.png"
+import chose7 from "../../public/mainPage/choseYourGame/7.png"
+import chose8 from "../../public/mainPage/choseYourGame/8.png"
+import chose9 from "../../public/mainPage/choseYourGame/9.png"
+import chose10 from "../../public/mainPage/choseYourGame/10.png"
+import chose11 from "../../public/mainPage/choseYourGame/11.png"
+import chose12 from "../../public/mainPage/choseYourGame/12.png"
+import chose13 from "../../public/mainPage/choseYourGame/13.png"
+import chose14 from "../../public/mainPage/choseYourGame/14.png"
 export const navLink = [
     { title:"League of Legends", hash:"/League-of-Legends" },
     { title:"Valorant", hash:"/Valorant" },
@@ -26,15 +40,21 @@ export const gamesImg = [
     {img:img4},
 ]
 export const ChoseGame = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img3,
-    img1,
-    img4,
-    img3,
-    img2,
+    chose2,
+    chose3,
+    chose4,
+    chose3,
+    chose5,
+    chose6,
+    chose7,
+    chose8,
+    chose9,
+    chose10,
+    chose11,
+    chose12,
+    chose13,
+    chose14,
+
 ]
 export const NewsImage = [
     img2,

@@ -333,6 +333,21 @@ width: 20%;
 .PopularGamesBox{
   transition-delay: .3s;
 }
+.PopularGamesBox::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  background: var(--text-main-color);
+  border-radius: 14px;
+  filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.PopularGamesBox:hover::before {
+  opacity: 1;
+}
 .PopularGamesBox:hover{
     transform: translateY(-10px);
     -webkit-transform: translateY(-10px);

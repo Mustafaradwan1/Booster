@@ -6,9 +6,9 @@ import { MdOutlineMail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className='bg-[#000] '>
-      <hr className="text-gray-700 "/>
-      <div className="container pt-20 text-white flex-wrap flex gap-5 justify-between ">
+    <div className='bg-black '>
+      <hr className="text-gray-700 pb-16"/>
+      <div className="container  text-white flex-wrap flex gap-5 justify-between ">
         <div className='sm:w-[85%] md:w-[calc(50%-20px)] lg:w-[calc(35%-20px)]'>
           <div className="info sm:w-full">
             <h2 className="text-gradient-main text-3xl font-bold mb-5">

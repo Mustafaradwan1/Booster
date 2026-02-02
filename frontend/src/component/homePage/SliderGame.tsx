@@ -29,8 +29,8 @@ const SliderGame: React.FC<ImageSliderProps> = ({ slidesToShow = 5, images }) =>
           spaceBetween={20}
         >
         {images.map((img, index) => (
-          <SwiperSlide key={index}>
-            <Image src={img} alt={`slide-${index}`} className="w-full h-[280px] rounded-lg" />
+          <SwiperSlide key={index} >
+            <Image src={img} alt={`slide-${index}`} className="w-full h-[280px] border border-red-500  rounded-lg" />
             <h2>conter game</h2>
           </SwiperSlide>
         ))}
