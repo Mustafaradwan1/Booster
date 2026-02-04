@@ -53,6 +53,7 @@ body {
 }
 .container{
   margin: auto;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
       .container{

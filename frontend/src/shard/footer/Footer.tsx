@@ -46,7 +46,7 @@ const Footer = () => {
           <li className='cursor-pointer text-gray-500'>Terms of Service</li>
         </ul>
         <hr className="text-gray-700 w-full mt-8"/>
-        <div className="pb-8 pt-3 flex items-center justify-between w-full text-gray-500 text-sm">
+        <div className="pb-8 pt-3 flex items-center justify-between max-sm:flex-col max-sm:gap-2 w-full text-gray-500 text-sm">
           <p>© 2024 NEXUS Gaming. All rights reserved.</p>
           <ul className="flex gap-5">
             <li>Privacy</li>
